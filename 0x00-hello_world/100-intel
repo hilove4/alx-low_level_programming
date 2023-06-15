@@ -1,24 +1,2 @@
 #!/bin/bash
-
-# Get the C file name from the $CFILE environment variable
-cfile="$CFILE"
-
-# Check if $CFILE is set
-if [ -z "$cfile" ]; then
-    echo "Error: C file name not specified in \$CFILE environment variable."
-    exit 1
-fi
-
-# Replace the .c extension with .s for the output file
-sfile="${cfile%.c}.s"
-
-# Generate the assembly code using gcc with the -S flag
-gcc -S -masm=intel "$cfile" -o "$sfile"
-
-# Check if the assembly code generation was successful
-if [ $? -eq 0 ]; then
-    echo "Assembly code generated successfully. Output file: $sfile"
-else
-    echo "Error: Failed to generate assembly code."
-    exit 1
-fi
+gcc -S -masm=intel "$CFILE" 
