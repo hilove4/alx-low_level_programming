@@ -23,6 +23,5 @@ int print_sign(int n)
 		return -1;
 	}
 
-	/* This line is added to fix the error.*/
 	return 0;
 }
